@@ -1,4 +1,4 @@
-import { UpdateInvoice, DeleteInvoice } from "@/app/ui/invoices/buttons";
+import { UpdateInvoice } from "@/app/ui/invoices/buttons";
 import InvoiceStatus from "@/app/ui/invoices/status";
 import { formatDateToLocal, formatCurrency } from "@/app/lib/utils";
 import Image from "next/image";
@@ -53,7 +53,7 @@ export default function InvoicesTable({
             <tbody className="bg-white">
               {invoices.map((invoice) => (
                 <tr
-                  key={invoice.id}
+                  key={invoice.id} // Use the actual invoice ID, not customer_id
                   className="w-full border-b py-3 text-sm last-of-type:border-none [&:first-child>td:first-child]:rounded-tl-lg [&:first-child>td:last-child]:rounded-tr-lg [&:last-child>td:first-child]:rounded-bl-lg [&:last-child>td:last-child]:rounded-br-lg"
                 >
                   <td className="whitespace-nowrap py-3 pl-6 pr-3">
@@ -83,7 +83,6 @@ export default function InvoicesTable({
                   <td className="whitespace-nowrap py-3 pl-6 pr-3">
                     <div className="flex justify-end gap-3">
                       <UpdateInvoice id={invoice.id} />
-                      <DeleteInvoice id={invoice.id} />
                     </div>
                   </td>
                 </tr>
@@ -125,7 +124,6 @@ export default function InvoicesTable({
                   </div>
                   <div className="flex justify-end gap-2">
                     <UpdateInvoice id={invoice.id} />
-                    <DeleteInvoice id={invoice.id} />
                   </div>
                 </div>
               </div>
